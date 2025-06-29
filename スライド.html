@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京大クエスト ~失われたキャンパスライフ~ 企画書</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #2c2a4a; /* 深い紫 */
+            color: #f0f0f0;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #4f4c7a; /* 少し明るい紫 */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #ffd700; /* ゴールド */
+        }
+
+        .header h1 {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 3em;
+            color: #ffd700;
+            margin: 0;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .header h2 {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .header p {
+            color: #cccccc;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #3d3b63;
+            border-radius: 10px;
+            border-left: 5px solid #ffd700;
+        }
+
+        h3 {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 1.8em;
+            color: #ffd700;
+            border-bottom: 2px solid #5f5c8a;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        p, li {
+            font-size: 1.1em;
+        }
+
+        strong {
+            color: #ffca28; /* 明るいゴールド */
+        }
+
+        ul {
+            list-style-type: '➤ ';
+            padding-left: 25px;
+        }
+        
+        .concept-box {
+            background-color: #2c2a4a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .concept-box .arrow {
+            font-size: 2em;
+            color: #ffd700;
+            margin: 10px 0;
+        }
+        
+        .concept-box p {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #5f5c8a;
+        }
+
+        th {
+            background-color: #ffd700;
+            color: #2c2a4a;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #4f4c7a;
+        }
+        
+        tr:hover {
+            background-color: #5f5c8a;
+        }
+        
+        /* --- Flow Chart Styles --- */
+        .new-flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0 20px 120px; 
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        .flow-left, .flow-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-basis: 35%;
+            position: relative;
+        }
+        .flow-middle {
+            flex-basis: 25%;
+            display: flex;
+            align-items: center;
+            height: 300px; 
+        }
+
+        .flow-node {
+            background: #2c2a4a;
+            border: 2px solid #ffd700;
+            padding: 10px 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .flow-arrow-vertical {
+            width: 2px;
+            height: 50px;
+            background-color: #ffd700;
+            position: relative;
+        }
+        .flow-arrow-vertical.down::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            bottom: -2px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #ffd700;
+            border-bottom: 2px solid #ffd700;
+            transform: rotate(45deg);
+        }
+        .flow-arrow-vertical span {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f0f0f0;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+        
+        .flow-arrow-loop {
+            position: absolute;
+            top: 67px;
+            left: -50px; 
+            width: 50px;
+            height: 116px;
+            border: 2px solid #ffd700;
+            border-right: none; 
+            border-radius: 20px 0 0 20px; 
+            z-index: 1;
+        }
+        .flow-arrow-loop::before { /* Arrow head pointing up */
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: -7px;
+            width: 12px;
+            height: 12px;
+            border-left: 2px solid #ffd700;
+            border-top: 2px solid #ffd700;
+            transform: rotate(45deg);
+        }
+
+        .flow-arrow-loop span {
+            position: absolute;
+            top: 50%;
+            right: 55px; 
+            transform: translateY(-50%);
+            color: #f0f0f0;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .flow-arrow-horizontal {
+            width: 100%;
+            height: 2px;
+            background-color: #ffd700;
+            position: relative;
+            margin-top: -100px;
+        }
+        .flow-arrow-horizontal::after {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: -5px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #ffd700;
+            border-top: 2px solid #ffd700;
+            transform: rotate(45deg);
+        }
+        .flow-arrow-horizontal span {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f0f0f0;
+            font-size: 0.9em;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .flow-arrow-vertical-right {
+             width: 2px;
+            height: 70px; 
+            background-color: #ffd700;
+            position: relative;
+        }
+        .flow-arrow-vertical-right.down::after {
+             content: '';
+            position: absolute;
+            left: -5px;
+            bottom: -2px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid #ffd700;
+            border-bottom: 2px solid #ffd700;
+            transform: rotate(45deg);
+        }
+        .flow-arrow-vertical-right span {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f0f0f0;
+            font-size: 0.9em;
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .grid-item {
+            background-color: #2c2a4a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #5f5c8a;
+            color: #aaaaaa;
+        }
+        
+        /* --- Media Styles --- */
+        .media-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .media-container img, .media-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid #ffd700;
+        }
+        
+        .weapon-images {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .weapon-images img {
+            width: 100%;
+            max-width: 180px; /* Adjust size for 4 images */
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #ffd700;
+        }
+.image-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.image-row img {
+    flex: 1; /* 画像が均等にスペースを分け合うように設定 */
+    min-width: 200px; /* 画面が小さい時に画像が潰れすぎないように設定 */
+}
+.stat-high {
+    background-color: rgba(220, 53, 69, 0.5); /* 半透明の赤 */
+    font-weight: bold;
+}
+.stat-low {
+    background-color: rgba(13, 110, 253, 0.5); /* 半透明の青 */
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>京大クエスト</h1>
+            <h2>~失われたキャンパスライフ~</h2>
+            <p>イメージ共有のための企画書　　　2025/6/26　　　社不</p>
+        </div>
+
+        <div class="section">
+            <h3>コンセプト</h3>
+            <div class="concept-box">
+                <p>見知ったキャンパス、京大あるあるネタによる楽しさ</p>
+                <p>+</p>
+                <p>ファンタジックな世界で成長し敵を打倒する喜び</p>
+                <div class="arrow">↓</div>
+                <p>日常の世界を特殊能力で非日常に過ごす楽しさ</p>
+                <p>どんどん成長して強い敵を倒す(RPG本来の)楽しさ</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>世界観</h3>
+            <ul>
+                <li><strong>ストーリーの導入:</strong> 憧れの京都大学に合格した主人公。しかしそこは、闇の組織「IRAS」に支配されていた。主人公は京都大学を解放するため、戦いを決意する。</li>
+                <li><strong>ゲームの目的:</strong> ダンジョンやクエストを攻略してステータスを上げ、ラスボスを倒す。</li>
+                <li><strong>雰囲気:</strong> 「京大らしさ：ファンタジー = 3：7」くらいのイメージ。</li>
+                <li><strong>フィールド:</strong> キャンパスには敵が跋扈しており、ダンジョン内はさらに危険。 プレイヤーはステータスを上げ、スキルや装備を揃えて立ち向かう。</li>
+                <li><strong>探索要素:</strong> オープンワールドだが、エリア毎に難易度勾配が設定されている。順当に進めるのが基本だが、上級エリアの隠しアイテムを回収して一気に強くなることも可能。</li>
+                <li><strong>隠し要素:</strong> キャンパス内には隠し単位やアイテムが多数存在。クリアだけなら不要だが、全力で隠されている。</li>
+            </ul>
+            <div class="media-container">
+                <img src="世界観.png">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>学部（ジョブシステム）</h3>
+            <p>いわゆるジョブシステム。拠点で気軽にローコストで変更可能。 設定中の学部によってステータスや対応武器のダメージが強化されます（例：理学部だと青(魔法)が強化）。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>学部</th>
+                        <th>イメージ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>理</td><td>紙耐久高火力のメイジ。魔法攻撃はかなり強い</td></tr>
+                    <tr><td>工</td><td>高耐久低火力のタンク。敵を引き付けたり守りを固めるスキルを持つ</td></tr>
+                    <tr><td>農</td><td>耐久よりのサモナー(動物など召喚)。オールラウンダーよりのサポーター</td></tr>
+                    <tr><td>医</td><td>低耐久のヒーラー。攻撃も多少できる</td></tr>
+                    <tr><td>薬</td><td>やや低耐久でかなり低火力のバッファー。全体バフスキルを持つ</td></tr>
+                    <tr><td>教育</td><td>低耐久高火力のバーサーカー。物理攻撃はかなり強い</td></tr>
+                    <tr><td>法</td><td>低火力のデバッファー。敵を弱体化させれば耐久は随一</td></tr>
+                    <tr><td>経済</td><td>ステータスは低いが器用で特殊能力(お金をたくさん GETできるなど)を持つ</td></tr>
+                    <tr><td>文</td><td>一発屋。攻撃力以外全体的に能力が低いが、一発逆転の大技を持つ</td></tr>
+                    <tr><td>総人</td><td>少しステータスが低いが、例外的にすべての学部のスキルを扱える</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h3>ストーリー</h3>
+            <p>世界支配を目論む闇の組織<strong>「IRAS」</strong>。主人公はIRAS打倒のため、京大の精霊の助けを借り、黒幕である機構長が陣取る時計台の結界を解くべく各地のダンジョンを攻略する。 その道中で、機構長の「思考同調装置」の開発といった悪行や目的が徐々に明らかになる。</p>
+            <p>最後に倒した幹部は、機構長の亡き娘を素体にした怪物だった。機構長は「自由を主張する京大生」に娘を殺された恨みから、人類の思考統一を企てていたのだ。</p>
+            <ul>
+                <li><strong>NORMAL END:</strong> 最終決戦で機構長を倒し計画を阻止。しかし、共に行動した精霊が実は機構長の娘の魂であり、父を失った悲しみに暮れてしまう。</li>
+                <li><strong>TRUE END:</strong> 機構長も含め、全ての魂を救うことはできるのか...!?</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h3>ゲームフロー</h3>
+            <div class="new-flow-container">
+                <div class="flow-left">
+                    <div class="flow-node">単位を取得(ミニクエスト)</div>
+                    <div class="flow-arrow-vertical down">
+                        <span>ステータスUP &amp;<br>新スキルGET</span>
+                    </div>
+                    <div class="flow-node">ダンジョンを攻略</div>
+                    <div class="flow-arrow-loop">
+                        <span>強い装備やアイテムを入手</span>
+                    </div>
+                </div>
+                <div class="flow-middle">
+                    <div class="flow-arrow-horizontal">
+                        <span>全ダンジョンクリア &amp;<br>規定単位数獲得</span>
+                    </div>
+                </div>
+                <div class="flow-right">
+                    <div class="flow-node">ラストダンジョン(時計台)</div>
+                    <div class="flow-arrow-vertical-right down">
+                        <span>　　　　　固定マップで、どんどん<br>登っていく。時計台の頂上か<br>ら異世界に移動</span>
+                    </div>
+                    <div class="flow-node">ラスボスに挑戦</div>
+                    <div class="flow-arrow-vertical-right down">
+                        <span>実績達成を目指しやりこみ<br>(高難度クリア、単位コンプ、<br>隠し発見などなど)</span>
+                    </div>
+                    <div class="flow-node">クリア後の世界</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>ターゲット層</h3>
+            <ul>
+                <li><strong>◎ メインターゲット:</strong> Minecraftの基本的な操作は理解しているがプロではないプレイヤー。京大に興味があり、RPGが好きな層。</li>
+                <li><strong>☐ サブターゲット:</strong> Minecraftの熟練者や、京大を知らない人でも楽しめる。</li>
+                <li><strong>△ 対象外かも:</strong> Minecraftが苦手な人や、RPGのレベル上げ作業が苦痛に感じる人。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>ステータス</h3>
+            <div class="grid-container">
+                <div class="grid-item"><strong>標準ステータス</strong><br>HP, MP, 攻撃力, 防御力, 魔法防御力</div>
+                <div class="grid-item"><strong>特殊ステータス</strong><br>属性値（赤, 青, 黄）があり、対応する攻撃を強化。</div>
+                <div class="grid-item"><strong>その他</strong><br>攻撃範囲やスキルCTなど、スキルや装備でのみ変化するものもある。</div>
+            </div>
+            
+            <h4>属性システム</h4>
+            <p>単位取得によって各属性値が成長します。 </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>属性</th>
+                        <th>分類</th>
+                        <th>対応単位・武器</th>
+                        <th>対応スキル</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>赤</td>
+                        <td>物理</td>
+                        <td>人社単位・近距離武器</td>
+                        <td>肉体系のスキル</td>
+                    </tr>
+                    <tr>
+                        <td>青</td>
+                        <td>魔法</td>
+                        <td>自然単位・遠距離武器</td>
+                        <td>魔法・精神系のスキル</td>
+                    </tr>
+                    <tr>
+                        <td>黄</td>
+                        <td>特殊</td>
+                        <td>一部単位・なし</td>
+                        <td>消費MPやCTが大きい大技</td>
+                    </tr>
+                     <tr>
+                        <td>黒</td>
+                        <td>例外</td>
+                        <td>原則なし</td>
+                        <td>汎用スキルやステータスが関係ないスキル</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h3>戦闘システム</h3>
+            <ul>
+                <li>プレイヤーのHP, MPは自然回復する。</li>
+                <li>攻撃には属性があり、敵には属性耐性があるため、敵によって装備やスキルを変える戦略が必要。</li>
+                <li>敵の攻撃には物理・魔法の区分がある（例：教育学部ダンジョンは物理の敵が多い）。</li>
+                <li>戦闘の体感は<strong>「フルダイヤ装備 vs Hardのゾンビ」</strong>にスキル戦を加えたイメージ。 しっかり殴り合う感覚で、囲まれると厳しいバランス。</li>
+                <li>適正レベルなら、連発できる攻撃で敵を3発程度で倒せる。</li>
+            </ul>
+        </div>
+
+   <div class="section">
+            <h3>単位（ミニクエスト）</h3>
+            <ul>
+                <li><strong>内容:</strong> いわゆるミニクエスト。専用の部屋で様々なチャレンジに挑戦します。（例：歴史学Ⅰ→ ピラミッド型迷路の攻略など）</li>
+                <li><strong>アクセス:</strong> キャンパス内の建物の入口から、対応する単位取得部屋に移動できます。（例：教育学部棟→教育系の単位）</li>
+                <li><strong>報酬:</strong> 単位を取得すると、予め指定されたステータスが少し上昇します。（例：数学系の単位ならMP+5, 青属性+1など）</li>
+                <li><strong>区分:</strong> 単位には「専門」「共通」の区分があり、取得できるスキルもそれぞれの区分に対応します。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>スキル</h3>
+            <ul>
+                <li><strong>取得方法:</strong> 対応する単位を取得すると入手できます。（例：歴史学Ⅰの単位を取るとスキル「血塗られた歴史書」をGET）</li>
+                <li><strong>装備:</strong> スキルは同時に複数セット可能です。</li>
+                <li><strong>パラメータ:</strong> 各スキルには属性、クールタイム（CT）、消費MPが存在します。</li>
+                <li><strong>専門スキル:</strong> 「共通スキル」はいつでも使用可能ですが、「専門スキル」はその学部でないと使用できません。（例：理学部なら共通スキルと理学部専門スキルのみ使える）</li>
+                <li><strong>熟練度:</strong> 単位取得以外でも、特定のスキルを一定回数以上使用することで新たなスキルを習得できる場合もあります。</li>
+            </ul>
+   <div class="media-container image-row">
+        <img src="スキル1.png">
+        <img src="スキル2.png">
+    </div>
+            <div class="media-container">
+                <video width="100%" controls poster="https://placehold.co/800x450/3d3b63/ffd700?text=スキル動画サンプル">
+                  <source src="skill_video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+       
+
+        <div class="section">
+            <h3>武器</h3>
+            <ul>
+                <li><strong>入手方法:</strong> ダンジョンの攻略報酬、敵からのドロップ、拠点での購入などで入手できます。</li>
+                <li><strong>効果:</strong> 装備するとステータスが上昇したり、攻撃に様々な追加効果が付与されたりします。（例：毒付与、リーチ延長、攻撃速度上昇など）</li>
+                <li><strong>武器種:</strong> 全9種の武器カテゴリがあり、それぞれが固有の特性を持っています。（※総合人間学部に対応する武器種はありません）</li>
+            </ul>
+            <div class="media-container">
+                <img src="武器1.png">
+            </div>
+            <div class="media-container">
+                <img src="武器2.png">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>武器種</th>
+                        <th>対応学部</th>
+                        <th>威力</th>
+                        <th>範囲</th>
+                        <th>攻撃速度</th>
+                        <th>特殊効果</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     <tr><td>杖</td><td>理</td><td class="stat-high">5</td><td>3</td><td class="stat-low">1</td><td>4</td><td>効果は攻撃的なもの中心</td></tr>
+                    <tr><td>弓</td><td>農</td><td class="stat-low">1</td><td class="stat-high">5</td><td class="stat-low">2</td><td class="stat-high">5</td><td>バニラの弓に効果がつく</td></tr>
+                    <tr><td>槌</td><td>工</td><td class="stat-high">6</td><td class="stat-low">2</td><td class="stat-low">1</td><td>4</td><td>通常攻撃が範囲hitするなど</td></tr>
+                    <tr><td>ナイフ</td><td>医</td><td>4</td><td class="stat-low">1</td><td class="stat-high">5</td><td>3</td><td>持っている間SPD上昇など</td></tr>
+                    <tr><td>針</td><td>薬</td><td class="stat-low">1</td><td class="stat-high">5</td><td>3</td><td>4</td><td>特殊効果は軽いデバフ中心</td></tr>
+                    <tr><td>斧</td><td>教育</td><td class="stat-high">7</td><td class="stat-low">2</td><td>3</td><td class="stat-low">1</td><td>デバフ持ちだが一撃が強力</td></tr>
+                    <tr><td>剣</td><td>法</td><td>4</td><td>4</td><td>4</td><td class="stat-low">1</td><td>癖がなく使いやすい</td></tr>
+                    <tr><td>銃</td><td>経済</td><td class="stat-low">1</td><td class="stat-high">5</td><td class="stat-high">5</td><td class="stat-low">2</td><td>銃PvPよりも威力激減</td></tr>
+                    <tr><td>本</td><td>文</td><td>3</td><td>3</td><td class="stat-low">1</td><td class="stat-high">6</td><td>効果は補助的なもの中心</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h3>ダンジョン</h3>
+            <p>ダンジョンは、ボス部屋・ギミック部屋・報酬部屋を含む数十の部屋が<strong>自動でランダム生成</strong>される。 ボスを倒せばクリアとなり、お金や強力な装備が手に入る。</p>
+            <ul>
+                <li><strong>ギミック部屋:</strong> 論理パズルや特殊な戦闘など、ギミックを解かないと進めない。</li>
+                <li><strong>攻略順:</strong> 農→工→薬→教→経→法→医→理→文→総の順で攻略していく想定。</li>
+                <li><strong>ストーリー進行:</strong> ダンジョンを進めるごとに、黒幕の正体や目的が明かされていく。</li>
+            </ul>
+            <div class="media-container">
+                <img src="ダンジョン.png">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>敵</h3>
+            <ul>
+                <li><strong>出現場所:</strong> キャンパス内やダンジョン内に出没します。（イベント中は消滅）</li>
+                <li><strong>強さ:</strong> ゲーム後半になるほど、ステータスが高い、あるいは特殊能力が厄介な敵が増えていきます。</li>
+                <li><strong>ドロップアイテム:</strong> 一部の敵は倒すとアイテムをドロップします。<br>（例：<strong>はぐれ浪人生</strong>は高速で移動しすぐ消滅するが、倒せればお金をたくさん貰える。<strong>警備員</strong>を倒すと警備員の服GET）</li>
+                <li><strong>見た目:</strong> 基本的にはバニラのMinecraftに準拠しますが、後半の敵は弱点が分かりやすいようにテクスチャを変更する予定です。</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>ボス</h3>
+            <ul>
+                <li><strong>存在:</strong> 各ダンジョンには強力なボスが存在します。</li>
+                <li><strong>攻撃:</strong> ボスは固有の攻撃を複数行います。</li>
+                <li><strong>モデル:</strong> ボスの3Dモデルは独自に作成する予定です。</li>
+            </ul>
+            <div class="media-container">
+                <img src="ボス.mp4">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>拠点：中央食堂</h3>
+            <p>IRASに対抗する組織のアジト。 ここでは多岐にわたる活動が可能です。</p>
+            <div class="grid-container">
+                <div class="grid-item"><strong>図鑑</strong><br>武器・防具の性能や入手場所を確認</div>
+                <div class="grid-item"><strong>倉庫</strong><br>アイテムを収納</div>
+                <div class="grid-item"><strong>学生窓口</strong><br>学部の解放・変更</div>
+                <div class="grid-item"><strong>スキル相談窓口</strong><br>スキルの設定・スロット解放</div>
+                <div class="grid-item"><strong>証明書自動発行機</strong><br>進捗状況の確認</div>
+                <div class="grid-item"><strong>キャリアセンター</strong><br>ステータスの振り直し</div>
+                <div class="grid-item"><strong>学生保健室</strong><br>難易度の変更</div>
+                <div class="grid-item"><strong>購買</strong><br>アイテムの売買</div>
+                <div class="grid-item"><strong>留学生ラウンジ「きずな」</strong><br>ガチャで情報収集</div>
+                <div class="grid-item"><strong>鍛冶屋</strong><br>レア素材を最強装備と交換</div>
+                <div class="grid-item"><strong>実績確認所</strong><br>NORMAL END後に解放</div>
+            </div>
+            <div class="media-container">
+                <img src="拠点.png">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>やりこみ要素：実績システム</h3>
+            <p>「隠し単位を全て見つける」「最強防具をフル装備する」など、クリア以上のことを要求する実績を10個ほど用意。 実績を一つ達成するごとに、ボスたちが笑っている幸せなイラストの一部分が解放されていきます。</p>
+            <div class="media-container">
+                <img src="やりこみ.jpg">
+            </div>
+        </div>
+<div class="section">
+    <h3>今後の作業</h3>
+    <p>今後必要となる作業は次の通りです。（まだ想定の段階なので変化する可能性があります）</p>
+    <ul>
+        <li><strong>建築:</strong> ラスボス戦エリア、時計台内部、単位取得部屋（40時間*人)</li>
+        <li><strong>モデル:</strong> 銃追加作成、ボスアニメーション修正（優先度低）（5時間*人）</li>
+        <li><strong>テクスチャ:</strong> 武器防具アイテムテクスチャ、各種レイアウト画面テクスチャ、実績解除の絵、一部モブ新規テクスチャ（作るなら）（30時間*人）</li>
+        <li><strong>システム:</strong> たくさん（たくさん）</li>
+        <li><strong>シナリオ:</strong> ストーリーの肉付け・調整（10時間*人）</li>
+        <li><strong>デザイン:</strong> 具体的なアイデア出し（敵/武器/防具/アイテム/単位のテキストとかアイデアとか）（20時間*人）</li>
+        <li><strong>テストプレイ:</strong> たくさん</li>
+    </ul>
+</div>
+        <div class="footer">
+            <p>以上です。ご清聴ありがとうございました。</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
